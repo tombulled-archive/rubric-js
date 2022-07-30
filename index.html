@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>App 1</title>
+
+        <!--<script src="jquery.js"></script>
+
+        <script src="nunjucks.js"></script>
+        <script src="fingerprint2.js"></script>
+
+        <script src="components/utils.js"></script>-->
+
+        <!-- <script src="components/html.js"></script> -->
+        <!-- <script src="components/swiper.js"></script> -->
+        <!--<script src="components/page.js"></script>
+        <script src="components/director.min.js"></script>
+        <script src="components/navigo.min.js"></script>
+        <script src="components/router.js"></script>-->
+    </head>
+    <body>
+        <!--<script src="bundle.js"></script>-->
+        <script src="full-bundle.js"></script>
+
+        <script type="text/javascript">
+            // Nunjucks - Important !
+            nunjucks.configure({ autoescape: false });
+
+            var html_text = "<div id='some-id'><ul><li>Li 1</li><li class='some-class'>Li 2</li></ul></div><swiper-container><swiper-slide data-tag='1'>Slide 1</swiper-slide><swiper-slide class='some-cclass' /></swiper-container>";
+            var html_text = `
+            <div active><p class="bob">Hello!</p></div>
+            <ul>
+                <li>Hello Greg</li>
+                <i> Wassup    Samm  </i>
+            </ul>
+            <!-- comment -->
+            <!DOCTYPE html>
+            <swiper-container>
+                <div>
+                    <b> Hello There </b>
+                    <swiper-slide>Slide 1<swiper-slide class="waffle" attr="1">Slide 1.1</swiper-slide></swiper-slide>
+                    <swiper-slide>Slide 2</swiper-slide>
+                    <swiper-slide>Slide 3</swiper-slide>
+                </div>
+            </swiper-container>
+            `;
+
+            var flattened = rubric.flatten(html_text, app.components, {}, {});
+
+            console.log(flattened);
+
+            // Insert flattened into #app
+            $('#app').append($(flattened));
+
+            // Fingerprint2.js
+            if (window.requestIdleCallback) {
+                requestIdleCallback(function () {
+                    Fingerprint2.get(function (components) {
+                      console.log(components) // an array of components: {key: ..., value: ...}
+                    })
+                })
+            } else {
+                setTimeout(function () {
+                    Fingerprint2.get(function (components) {
+                      console.log(components) // an array of components: {key: ..., value: ...}
+                    })
+                }, 500)
+            }
+
+            // page('/', function(){console.log('/');});
+            // page('/artist', function(){console.log('/artist');});
+            // page.start(); //Start the router
+
+            /*var author = function () { console.log("author"); };
+             var books = function () { console.log("books"); };
+             var viewBook = function (bookId) {
+               console.log("viewBook: bookId is populated: " + bookId);
+             };
+
+            var routes = {
+              '/author': author,
+              '/books': [books, function() {
+                console.log("An inline route handler.");
+              }],
+              '/books/view/:bookId': viewBook
+            };
+
+            var router = Router(routes);
+
+            router.init();*/
+        </script>
+    </body>
+</html>

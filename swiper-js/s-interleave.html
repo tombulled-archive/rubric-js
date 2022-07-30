@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <title>Swiper demo</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" href="./lib/swiper.min.css">
+        <style>
+            body {
+  background: #000;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #000;
+  margin: 0;
+  padding: 0;
+}
+
+.swiper-container {
+  /*height: calc(100vh - 120px);
+  margin: 60px;*/
+  height: 100vh;
+  width: 100vw;
+}
+
+.swiper-slide {
+  overflow: hidden;
+}
+
+.slide-inner {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+/*.copy {
+  position: absolute;
+  bottom: 15px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: white;
+  letter-spacing: 0.06em;
+}
+a {
+  color: white;
+}*/
+
+        </style>
+    </head>
+    <body>
+        <div class="swiper-container">
+  <div class="swiper-wrapper">
+<!--     <div class="swiper-slide">
+      <div class="slide-inner" style="background-image:url(http://cs412624.vk.me/v412624691/4117/RWBNZL6CLtU.jpg)"></div>
+    </div>
+    <div class="swiper-slide">
+      <div class="slide-inner" style="background-image:url(http://cs412624.vk.me/v412624691/41ad/atM6w55Z9Xg.jpg)"></div>
+    </div> -->
+    <div class="swiper-slide">
+      <div class="slide-inner" style="background-image:url(./images/nature/nature-1.jpg)"></div>
+    </div>
+    <div class="swiper-slide">
+      <div class="slide-inner" style="background-image:url(./images/nature/nature-2.jpg)"></div>
+    </div>
+    <div class="swiper-slide">
+      <div class="slide-inner" style="background-image:url(./images/nature/nature-3.jpg)"></div>
+    </div>
+    <div class="swiper-slide">
+      <div class="slide-inner" style="background-image:url(./images/nature/nature-4.jpg)"></div>
+    </div>
+<!--     <div class="swiper-slide">
+      <div class="slide-inner" style="background-image:url(http://cs412624.vk.me/v412624691/415d/X7YuVilSl4k.jpg)"></div>
+    </div> -->
+  </div>
+  <!--<div class="swiper-button-next swiper-button-white"></div>
+  <div class="swiper-button-prev swiper-button-white"></div>-->
+</div>
+<!--<div class="copy">Photos by <a target="_blank" href="https://500px.com/udovichenko">Dmitry Udovichenko</a><button data-toggle>toggle</button></div>-->
+
+    <script src="./lib/swiper.min.js"></script>
+
+    <script type="text/javascript">
+        var interleaveOffset = 1; // Swipe the next page across, curent doesnt move
+        var interleaveOffset = 0.5; // Default interleave effect
+        var interleaveOffset = 0; // Default 'snap' effect
+        var interleaveOffset = 0.25;
+        //var interleaveOffset = -.5;
+
+var swiperOptions = {
+  /*loop: true,*/
+  speed: 300, // default, medium
+  //speed: 250, // fast
+  //speed: 500, // slow
+  grabCursor: true,
+  watchSlidesProgress: true,
+  keyboardControl: true,
+  keyboard: true,
+  /*mousewheelControl: true,
+  keyboardControl: true,
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev"
+},*/
+  on: {
+    progress: function() {
+      var swiper = this;
+      for (var i = 0; i < swiper.slides.length; i++) {
+        var slideProgress = swiper.slides[i].progress;
+        var innerOffset = swiper.width * interleaveOffset;
+        var innerTranslate = slideProgress * innerOffset;
+        swiper.slides[i].querySelector(".slide-inner").style.transform =
+          "translate3d(" + innerTranslate + "px, 0, 0)";
+      }
+    },
+    touchStart: function() {
+      var swiper = this;
+      for (var i = 0; i < swiper.slides.length; i++) {
+        swiper.slides[i].style.transition = "";
+      }
+    },
+    setTransition: function(speed) {
+      var swiper = this;
+      for (var i = 0; i < swiper.slides.length; i++) {
+        swiper.slides[i].style.transition = speed + "ms";
+        swiper.slides[i].querySelector(".slide-inner").style.transition =
+          speed + "ms";
+      }
+    }
+  }
+};
+
+var swiper = new Swiper(".swiper-container", swiperOptions);
+
+// document.querySelector('[data-toggle]').addEventListener('click', function(){
+//   if (swiper.realIndex == 0) {
+//     swiper.slideTo(swiper.slides.length - 1);
+//   } else {
+//     swiper.slideTo(0);
+//   }
+// });
+
+// function logIndex () {
+//   requestAnimationFrame(logIndex);
+//   console.log(swiper.realIndex);
+// }
+// logIndex();
+    </script>
+    </body>
+</html>
